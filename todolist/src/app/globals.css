@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background: #090b16;
+  --foreground: #f5f7ff;
+  --muted: #9299b5;
+  --line: #ffffff18;
+  --accent: #8b7cff;
+  --accent-soft: #8b7cff22;
+  --surface: #15182a;
+  --surface-soft: #1b1e33;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 8% 8%, #5545c52b 0, transparent 28rem),
+    radial-gradient(circle at 92% 88%, #176d9e26 0, transparent 30rem),
+    linear-gradient(135deg, #090b16 0%, #11142a 48%, #0b2030 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { min-height: 100vh; padding: 48px 20px; }
+.app-container { width: 100%; max-width: 760px; margin: 0 auto; }
+.app-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 30px; }
+.eyebrow { color: #a99fff; font-size: 12px; font-weight: 700; letter-spacing: .12em; margin: 0 0 12px; text-transform: uppercase; }
+h1 { color: #fff; font-size: clamp(28px, 5vw, 40px); letter-spacing: -.045em; line-height: 1.1; margin: 0; }
+h1 span { color: #ffd477; font-size: .7em; vertical-align: top; }
+.subtitle { color: var(--muted); font-size: 15px; margin: 10px 0 0; }
+.progress-ring { align-items: center; background: linear-gradient(145deg, #8b7cff2b, #43d3d31b); border: 7px solid #8b7cff30; border-radius: 50%; display: flex; flex: 0 0 80px; flex-direction: column; height: 80px; justify-content: center; box-shadow: 0 0 30px #7367ff1f; }
+.progress-ring strong { color: #c3bcff; font-size: 18px; line-height: 1; }
+.progress-ring span { color: #9890de; font-size: 10px; margin-top: 4px; }
+.add-form { background: #ffffff0d; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 45px #0000001c; display: flex; gap: 10px; margin-bottom: 22px; padding: 8px; backdrop-filter: blur(18px); }
+.add-form input { background: transparent; border: 0; color: var(--foreground); flex: 1; min-width: 0; outline: 0; padding: 10px 12px; }
+.add-form input::placeholder { color: #747c9c; }
+.add-button { align-items: center; background: linear-gradient(135deg, #8d7fff, #5869ef); border: 0; border-radius: 9px; color: #fff; display: flex; gap: 7px; font-size: 13px; font-weight: 700; padding: 0 17px; transition: box-shadow .2s, transform .2s; }
+.add-button:hover { box-shadow: 0 8px 20px #786bff55; transform: translateY(-1px); }
+.add-button svg, .delete-button svg { height: 17px; width: 17px; }
+.todo-card { background: linear-gradient(145deg, #181b30f2, #111528f2); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 25px 65px #00000030; overflow: hidden; backdrop-filter: blur(18px); }
+.list-toolbar { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; padding: 24px 26px 20px; }
+h2 { font-size: 18px; letter-spacing: -.02em; margin: 0 0 5px; }
+.list-toolbar p { color: var(--muted); font-size: 13px; margin: 0; }
+.filters { background: #090b1699; border: 1px solid var(--line); border-radius: 8px; display: flex; padding: 3px; }
+.filter-button { background: transparent; border: 0; border-radius: 6px; color: var(--muted); font-size: 12px; padding: 7px 10px; }
+.filter-button.selected { background: #ffffff14; box-shadow: 0 2px 7px #00000020; color: #fff; font-weight: 700; }
+.tasks { padding: 5px 26px; }
+.task { align-items: center; border-bottom: 1px solid #ffffff0d; display: flex; gap: 13px; min-height: 66px; }
+.task:last-child { border-bottom: 0; }
+.check-button { align-items: center; background: transparent; border: 1.5px solid #68718d; border-radius: 50%; color: #fff; display: flex; flex: 0 0 21px; height: 21px; justify-content: center; padding: 0; transition: background .2s, border-color .2s; width: 21px; }
+.check-button:hover { border-color: var(--accent); }
+.completed .check-button { background: linear-gradient(135deg, #9a8cff, #5d6ff0); border-color: transparent; }
+.check-button svg { height: 14px; width: 14px; }
+.task-title { color: #e6e9f4; flex: 1; font-size: 14px; transition: color .2s; }
+.completed .task-title { color: #747c98; text-decoration: line-through; }
+.delete-button { background: transparent; border: 0; color: #69718c; padding: 8px; }
+.delete-button:hover { color: #e46373; }
+.empty-state { align-items: center; color: var(--muted); display: flex; flex-direction: column; padding: 42px 20px; text-align: center; }
+.empty-state > span { align-items: center; background: var(--accent-soft); border-radius: 50%; color: var(--accent); display: flex; font-size: 22px; height: 44px; justify-content: center; margin-bottom: 12px; width: 44px; }
+.empty-state strong { color: #fff; font-size: 14px; }
+.empty-state p { font-size: 12px; margin: 6px 0 0; }
+.list-footer { align-items: center; background: #090b1640; border-top: 1px solid var(--line); color: var(--muted); display: flex; font-size: 12px; justify-content: space-between; padding: 15px 26px; }
+.status-dot { background: #59c991; border-radius: 50%; display: inline-block; height: 7px; margin-right: 5px; width: 7px; }
+.clear-button { background: transparent; border: 0; color: var(--muted); font-size: 12px; padding: 0; }
+.clear-button:hover { color: #e46373; }
+.tip { color: #737b98; font-size: 12px; margin: 22px 0 0; text-align: center; }
+.tip span { background: #ffffff16; border-radius: 4px; color: #aeb5d0; display: inline-block; font-size: 11px; margin-right: 4px; padding: 2px 5px; }
+
+@media (max-width: 560px) {
+  .app-shell { padding: 28px 14px; }
+  .app-header { align-items: flex-start; }
+  .progress-ring { flex-basis: 64px; height: 64px; width: 64px; }
+  .progress-ring strong { font-size: 15px; }
+  .list-toolbar { align-items: flex-start; flex-direction: column; padding: 20px 18px 16px; }
+  .filters { width: 100%; }
+  .filter-button { flex: 1; }
+  .tasks { padding: 3px 18px; }
+  .list-footer { padding: 14px 18px; }
+  .add-button { padding: 0 13px; }
+  .add-button span { display: none; }
+}
